@@ -4,19 +4,19 @@ import axios from "axios";
 const baseURL = 'http://localhost:3000/Tasks';
 
 const API = {
-    getTask: function() {
+    getAll: function() {
         return axios.get(baseURL);
     },
-   createTask: (newTask) => {
+   createJournal: (newTask) => {
         return axios.post(baseURL, newTask);
    },
-   getTaskById: (id) => {
+   getJournalById: (id) => {
        return axios.get(`${baseURL}/${id}`);
    },
-   deleteTask: (id) => {
+   deleteJournal: (id) => {
        return axios.delete(`${baseURL}/${id}`)
    },
-   updateTask: (id, updatedTask) => {
+   updateJournal: (id, updatedTask) => {
        return axios.put(`${baseURL}/${id}`, updatedTask)
    }
 

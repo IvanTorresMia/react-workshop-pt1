@@ -1,16 +1,16 @@
 import "./App.css";
 import API from "./Services/API";
 import React, { useState, useEffect } from "react";
-import AllTasks from "./Components/AllTasks";
-import OneTask from "./Components/OneTask";
-import TaskContext from "./Services/TaskContext";
-import UpdateTask from "./Components/UpdateTask";
+import OneJournal from "./Components/OneJournal";
+import JournalContext from "./Services/JournalContext";
+import UpdateJournal from "./Components/UpdateJournal";
 import NavBar from "./Components/NavBar";
+import AllJournalsCom from "./Components/AllJournals";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 function App() {
-  const [allTasks, setAllTasks] = useState([]);
-  const [newTask, setNewTask] = useState({
+  const [allJournals, setAllJournals] = useState([]);
+  const [newJournal, setNewJournal] = useState({
     title: "",
     body: "",
   });
@@ -21,29 +21,29 @@ function App() {
   const contextObject = {
     handleSubmit: (e) => {
       e.preventDefault();
-      API.createTask(newTask).then((res) => {
+      API.createJournal(newJournal).then((res) => {  
         console.log(res);
         setRefresh({ ...resfresh, count: resfresh.count + 1 });
       });
     },
     handleTitleChange: (e) => {
       const { value } = e.target;
-      setNewTask({ ...newTask, title: value });
-      console.log(newTask);
+      setNewJournal({ ...newJournal, title: value });
+      console.log(newJournal);
     },
     handleBodyChange: (e) => {
       const { value } = e.target;
-      setNewTask({ ...newTask, body: value });
-      console.log(newTask);
+      setNewJournal({ ...newJournal, body: value });
+      console.log(newJournal);
     },
-    deleteTask: (id) => {
-      API.deleteTask(id).then((res) => {
+    deleteJournal: (id) => {
+      API.deleteJournal(id).then((res) => {
         console.log(res);
         setRefresh({ ...resfresh, count: resfresh.count + 1 });
       });
     },
-    updateTask: (id) => {
-      API.updateTask(id, newTask).then((res) => {
+    updateJournal: (id) => {
+      API.updateJournal(id, newJournal).then((res) => {
         console.log(res);
         navigate("/");
         setRefresh({ ...resfresh, count: resfresh.count + 1 });
@@ -60,21 +60,21 @@ function App() {
   }, [resfresh]);
 
   const getAll = () => {
-    API.getTask().then((res) => {
-      setAllTasks(res.data);
+    API.getAll().then((res) => {
+      setAllJournals(res.data);
     });
   };
 
   return (
     <div>
-      <TaskContext.Provider value={contextObject}>
+      <JournalContext.Provider value={contextObject}>
       <NavBar />
         <Routes>
-          <Route path="/" exact element={<AllTasks taskData={allTasks} />} />
-          <Route path="/one-task/:id" element={<OneTask />} />
-          <Route path="/delete-task/:id" element={<UpdateTask />} />
+          <Route path="/" exact element={<AllJournalsCom journalData={allJournals} />} />
+          <Route path="/one-journal/:id" element={<OneJournal />} />
+          <Route path="/delete-journal/:id" element={<UpdateJournal />} />
         </Routes>
-      </TaskContext.Provider>
+      </JournalContext.Provider>
     </div>
   );
 }
