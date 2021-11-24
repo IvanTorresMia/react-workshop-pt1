@@ -4,6 +4,7 @@ import CreateJournal from "../CreateJournal";
 
 const AllJournalsCom = ({ journalData }) => {
   const context = useContext(TaskContext);
+  console.log(context);
 
   return (
     <div className="container header">
@@ -23,7 +24,7 @@ const AllJournalsCom = ({ journalData }) => {
               >
                 Delete This Journal
               </button>
-              <a className="btn" href={`delete-journal/${journal.id}`}>
+              <a className="btn" href={`update-journal/${journal.id}`}>
                 Update Journal
               </a>
             </div>

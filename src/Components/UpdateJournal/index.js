@@ -8,7 +8,7 @@ const UpdateJournal = () => {
 
   return (
     <div className="update-header">
-      <form className="create-form" onSubmit={(e) => context.updateJouranl(id)}>
+      <form className="forms">
         <h3>Update Journal</h3>
         <label htmlFor="title">Update Title</label>
         <br />
@@ -26,6 +26,7 @@ const UpdateJournal = () => {
         <button
           className="btn"
           type="button"
+          value="Submit"
           onClick={() => context.updateJournal(id)}
         >
           update

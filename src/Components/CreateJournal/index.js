@@ -7,7 +7,7 @@ const CreateJournal = () => {
 
   return (
     <div>
-      <form onSubmit={context.handleSubmit} className="create-form">
+      <form onSubmit={context.handleSubmit} className="forms">
         <label htmlFor="title">Title Of Journals</label>
         <br />
         <input name="title" onChange={context.handleTitleChange}></input>

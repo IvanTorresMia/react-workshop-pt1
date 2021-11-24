@@ -24,6 +24,7 @@ function App() {
       API.createJournal(newJournal).then((res) => {  
         console.log(res);
         setRefresh({ ...resfresh, count: resfresh.count + 1 });
+        document.querySelector(".forms").reset();
       });
     },
     handleTitleChange: (e) => {
@@ -40,6 +41,7 @@ function App() {
       API.deleteJournal(id).then((res) => {
         console.log(res);
         setRefresh({ ...resfresh, count: resfresh.count + 1 });
+        navigate("/");
       });
     },
     updateJournal: (id) => {
@@ -72,7 +74,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<AllJournalsCom journalData={allJournals} />} />
           <Route path="/one-journal/:id" element={<OneJournal />} />
-          <Route path="/delete-journal/:id" element={<UpdateJournal />} />
+          <Route path="/update-journal/:id" element={<UpdateJournal />} />
         </Routes>
       </JournalContext.Provider>
     </div>

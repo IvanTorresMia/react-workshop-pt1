@@ -165,12 +165,12 @@ body {
   margin: 20px;
 }
 
-.create-form > label {
+.forms > label {
   font-size: 17px;
   margin: 3% 0;
 }
 
-.create-form > button {
+.forms > button {
   margin: 8% 0;
   background-color: var(--dark-blue);
   color: white;
@@ -187,8 +187,8 @@ body {
   text-transform: uppercase;
 }
 
-.create-form > textarea,
-.create-form > input {
+.forms > textarea,
+.forms > input {
   border: none;
   border-radius: 2px;
   overflow: auto;
@@ -240,4 +240,10 @@ body {
 
 .view-journal p {
   font-size: 25px;
+}
+
+.view-journal > .btn {
+  background-color: var(--dark-blue);
+  color: white;
+  margin: 10px 10px 10px 0;
 }
